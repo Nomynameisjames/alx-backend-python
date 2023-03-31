@@ -5,7 +5,7 @@ This module contains a function that returns the floor value passed to it
 """
 
 
-def floor(n: float) -> float:
+def floor(n: float) -> int:
     """
     This function returns the floor value passed to it
     """
