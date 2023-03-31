@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" module typing methods Union and Tuple """
 from typing import Union, Tuple
 
 
