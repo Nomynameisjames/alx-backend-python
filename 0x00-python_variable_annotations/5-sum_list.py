@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" module typing method List """
 from typing import List
 """
    declaring a list annonated type and summing the list using
