@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+""" module typing method List and Union """
 from typing import List, Union
 
 """
