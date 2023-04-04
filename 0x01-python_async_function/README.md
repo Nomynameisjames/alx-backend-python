@@ -20,7 +20,10 @@ Futures represent the result of a computation that has not yet completed.
 Tasks are used to run coroutines concurrently, and Streams provide a way to work with data in a streaming fashion.
 
                             Learning Objectives
-At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
+At the end of this project, you are expected to be able to explain to anyone,
+without the help of Google:
+
+
 0. async and await syntax
 1. How to execute an async program with asyncio
 2. How to run concurrent coroutines
