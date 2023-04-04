@@ -17,7 +17,7 @@ async def async_generator():
     '''
         async_generator function
         coroutine that will loop 10 times,
-        each time asynchronously wait 1 second,
+        each time asynchronously wait 1 second.
     '''
     for _ in range(10):
         await asyncio.sleep(1)
