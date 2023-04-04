@@ -4,6 +4,7 @@
 '''
 import asyncio
 import random
+from typing import AsyncGenerator
 
 
 '''
@@ -13,7 +14,7 @@ import random
 '''
 
 
-async def async_generator():
+async def async_generator() -> AsyncGenerator[float, None]:
     '''
         async_generator function
         coroutine that will loop 10 times,
