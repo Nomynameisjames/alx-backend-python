@@ -17,7 +17,7 @@ import asyncio
 async def wait_n(n: int, max_delay: int) -> List[float]:
     '''
         wait_random is called n times with the specified max_delay
-        importing wait_random from 0-basic_async_syntax module which 
+        importing wait_random from 0-basic_async_syntax module which
         generates a random delay between 0 and max_delay
     '''
     wait_random = __import__('0-basic_async_syntax').wait_random
