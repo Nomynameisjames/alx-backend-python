@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 ''' import the asyncio module to use async/await
     import the random module to generate random numbers
+    import the typing module to use AsyncGenerator type annotations
 '''
 import asyncio
 import random
