@@ -21,10 +21,9 @@ Tasks are used to run coroutines concurrently, and Streams provide a way to work
 
                             Learning Objectives
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
-
-async and await syntax
-How to execute an async program with asyncio
-How to run concurrent coroutines
-How to create asyncio tasks
-How to use the random module
+0. async and await syntax
+1. How to execute an async program with asyncio
+2. How to run concurrent coroutines
+3. How to create asyncio tasks
+4. How to use the random module
 
