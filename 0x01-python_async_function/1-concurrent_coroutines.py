@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 '''
   importing asyncio to use the async/await syntax
+  importing List from typing to annotate the function return value
 '''
+from typing import List
 import asyncio
 
 '''
@@ -12,7 +14,7 @@ import asyncio
 '''
 
 
-async def wait_n(n: int, max_delay: int) -> list:
+async def wait_n(n: int, max_delay: int) -> List[float]:
     '''
         wait_random is called n times with the specified max_delay
         importing wait_random from 0-basic_async_syntax module which 
@@ -20,8 +22,7 @@ async def wait_n(n: int, max_delay: int) -> list:
     '''
     wait_random = __import__('0-basic_async_syntax').wait_random
     waitTime = []
-    i = 0
-    for i in range(n):
+    for _ in range(n):
         waitTime.append(wait_random(max_delay))
     task = [await delay for delay in asyncio.as_completed(waitTime)]
     return task
