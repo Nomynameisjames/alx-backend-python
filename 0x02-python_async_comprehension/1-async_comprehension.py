@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-    async_generator from 0-async_generator.py 
+    async_generator from 0-async_generator.py
 """
 from typing import List
 """
@@ -17,5 +17,3 @@ async def async_comprehension() -> List[float]:
     async_generator = __import__('0-async_generator').async_generator
     task = [i async for i in async_generator()]
     return task
-
-
