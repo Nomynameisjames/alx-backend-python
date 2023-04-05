@@ -13,7 +13,7 @@ import time
 """
 
 
-async def measure_runtime() -> str:
+async def measure_runtime() -> float:
     """
         measure_runtime function declaration
     """
@@ -23,7 +23,7 @@ async def measure_runtime() -> str:
     await asyncio.gather(*(async_comprehension() for _ in range(4)))
     endTime = time.perf_counter()
     totalTime = endTime - startTime
-    return f'{totalTime:.3f} seconds'
+    return float(f'{totalTime:.3f}')
 
 """
     The total runtime taken is roughly 10 seconds because each
