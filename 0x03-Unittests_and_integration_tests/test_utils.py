@@ -45,3 +45,34 @@ class TestAccessNestedMap(unittest.TestCase):
             access_nested_map(nested_map, path)
             self.assertEqual(expected_err, e.exception, f"""Should be equal
                                     to KeyError""")
+
+
+"""
+    objective:
+    1- Define the TestGetJson(unittest.TestCase) class and implement the
+        TestGetJson.test_get_json method to test that utils.get_json
+        returns the expected result.
+    2- Use unittest.mock.patch to patch requests.get. returns a Mock object
+        with a json method that returns test_payload which you parametrize
+        alongside the test_url that you will pass to get_json
+    3- Test that the mocked get method was called exactly once (per input)
+        with test_url as argument.
+    4- Test that the output of get_json is equal to test_payload.
+"""
+
+
+class TestGetJson(unittest.TestCase):
+    """Test get_json"""
+    @parameterized.expand([
+        ("http://example.com", {"payload": True}),
+        ("http://holberton.io", {"payload": False})
+    ])
+    def test_get_json(self, test_url, test_payload):
+        """Test get_json"""
+        fake_json = Mock()
+        fake_json.json.return_value = test_payload
+        with patch('requests.get') as mock:
+            mock.return_value.json.return_value = test_payload
+            self.assertEqual(get_json(test_url), test_payload, f'''Should be
+                             equal to test_payload''')
+            mock.assert_called_once_with(test_url)
