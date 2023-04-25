@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """import files"""
 import unittest
-from unittest.mock import patch
+from unittest.mock import PropertyMock, patch
 from parameterized import parameterized
 from client import GithubOrgClient
 
@@ -33,3 +33,15 @@ class TestGithubOrgClient(unittest.TestCase):
         mock_get_json.assert_called_once_with(
             f'https://api.github.com/orgs/{org_name}'
         )
+
+    @parameterized.expand([
+        ("random-url", {'repos_url': 'http://some_url.com'})
+    ])
+    def test_public_repos_url(self, org_name, mock_get_json):
+        """test_public_repos_url method"""
+        with patch('client.GithubOrgClient.org', PropertyMock(
+                        return_value=mock_get_json)):
+            test_class = GithubOrgClient(org_name)._public_repos_url
+            res = mock_get_json.get('repos_url')
+            self.assertEqual(test_class, res, """public_repos_url matches the
+                                                value of repos_url""")
