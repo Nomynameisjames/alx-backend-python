@@ -34,3 +34,8 @@ class TestAccessNestedMap(unittest.TestCase):
         """Test access_nested_map"""
         self.assertEqual(access_nested_map(nested_map, path), expected,
                          'Should be equal')
+
+    def test_access_nested_map_exception(self):
+        """Use the assertRaises context manager to test a KeyError"""
+        with self.assertRaises(KeyError):
+            access_nested_map({}, "a")
