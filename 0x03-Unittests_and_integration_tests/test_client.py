@@ -33,7 +33,10 @@ class TestGithubOrgClient(unittest.TestCase):
         mock_get_json.assert_called_once_with(
             f'https://api.github.com/orgs/{org_name}'
         )
-
+    """
+        return a known payload. Test that the result of _public_repos_url is
+        the expected one based on the mocked payload.
+    """
     @parameterized.expand([
         ("random-url", {'repos_url': 'http://some_url.com'})
     ])
