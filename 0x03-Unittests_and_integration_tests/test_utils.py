@@ -83,13 +83,6 @@ class TestGetJson(unittest.TestCase):
     1- Define the TestMemoize(unittest.TestCase) class and implement the
         TestMemoize.test_memoize method, define the following:
         class TestClass:
-
-            def a_method(self):
-                return 42
-
-            @memoize
-            def a_property(self):
-                return self.a_method()
     2- Use unittest.mock.patch to mock a_method. Test that when calling
         a_property twice, the correct result is returned but a_method is only
         called once using assert_called_once.
