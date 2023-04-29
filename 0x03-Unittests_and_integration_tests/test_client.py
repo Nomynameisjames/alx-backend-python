@@ -4,6 +4,7 @@ import unittest
 from unittest.mock import PropertyMock, patch
 from parameterized import parameterized
 from client import GithubOrgClient
+from fixtures import TEST_PAYLOAD
 
 """
    objectives:
@@ -48,3 +49,41 @@ class TestGithubOrgClient(unittest.TestCase):
             res = mock_get_json.get('repos_url')
             self.assertEqual(test_class, res, """public_repos_url matches the
                                                 value of repos_url""")
+
+    """
+        Implement TestGithubOrgClient.test_has_license to unit-test
+    """
+    @parameterized.expand([
+        ({"license": {"key": "my_license"}}, "my_license", True),
+        ({"license": {"key": "other_license"}}, "my_license", False)
+    ])
+    def test_has_license(self, repo, license_key):
+        """test_has_license method"""
+        test_class = GithubOrgClient.has_license(repo, license_key)
+        self.assertEqual(test_class, True)
+
+    def requests_get(*args, **kwargs):
+        """
+            Function that mocks requests.get function
+            Returns the correct json data based on the given input url
+        """
+        class MockResponse:
+            """
+            Mock response
+            """
+            def __init__(self, json_data):
+                """
+                Constructor method
+                """
+                self.json_data = json_data
+
+            def json(self):
+                """
+                json method
+                """
+                return self.json_data
+
+        if args[0] == 'https://api.github.com/orgs/google':
+            return MockResponse(TEST_PAYLOAD[0][0])
+        if args[0] == TEST_PAYLOAD[0][0]["repos_url"]:
+            return MockResponse(TEST_PAYLOAD[0][1])
