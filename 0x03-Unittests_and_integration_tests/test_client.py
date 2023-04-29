@@ -62,28 +62,28 @@ class TestGithubOrgClient(unittest.TestCase):
         test_class = GithubOrgClient.has_license(repo, license_key)
         self.assertEqual(test_class, True)
 
-    def requests_get(*args, **kwargs):
+def requests_get(*args, **kwargs):
+    """
+        Function that mocks requests.get function
+        Returns the correct json data based on the given input url
+    """
+    class MockResponse:
         """
-            Function that mocks requests.get function
-            Returns the correct json data based on the given input url
-        """
-        class MockResponse:
-            """
             Mock response
+        """
+        def __init__(self, json_data):
             """
-            def __init__(self, json_data):
-                """
                 Constructor method
-                """
-                self.json_data = json_data
+            """
+            self.json_data = json_data
 
-            def json(self):
-                """
+        def json(self):
+            """
                 json method
-                """
-                return self.json_data
+            """
+            return self.json_data
 
-        if args[0] == 'https://api.github.com/orgs/google':
-            return MockResponse(TEST_PAYLOAD[0][0])
-        if args[0] == TEST_PAYLOAD[0][0]["repos_url"]:
-            return MockResponse(TEST_PAYLOAD[0][1])
+    if args[0] == 'https://api.github.com/orgs/google':
+        return MockResponse(TEST_PAYLOAD[0][0])
+    if args[0] == TEST_PAYLOAD[0][0]["repos_url"]:
+        return MockResponse(TEST_PAYLOAD[0][1])
